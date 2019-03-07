@@ -1,0 +1,10 @@
+/* miniprogram/pages/main/cloud/cloud.wxss */
+
+page {
+  width: 750rpx;
+  height: 1334rpx;
+}
+
+.text {
+  font-size: 36rpx;
+}

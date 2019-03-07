@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/main/edit/edit",
+    "pages/main/cloud/cloud",
+    "pages/main/preview/preview"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black"
+  }
+}

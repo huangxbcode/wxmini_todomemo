@@ -1,0 +1,50 @@
+<!--miniprogram/pages/main/cloud/cloud.wxml-->
+<!--滚动视图-->
+<scroll-view scroll-y style='width:100%;height:90%;position:relative;left:30rpx;'>
+  <!--待办备忘事项-->
+  <view wx:for='{{todoItems}}' wx:for-item='todoItem' wx:key='item' class='text' style='width:100%;height:150rpx;display:flex;flex-direction:row;'>
+    <!--待办圈圈图片-->
+    <view style='position:relative;top:49rpx;' bindtap='done' data-id='{{todoItem._id}}' data-index='{{todoItem.index}}'>
+      <image src='/images/todo.png' style='width:50rpx;height:50rpx;'></image>
+    </view>
+    <!--右边文本框-->
+    <view style='width:635rpx;height:128rpx;border-bottom:2rpx solid #F6F6F6;position:relative;left:15rpx;padding:10rpx;' bindtap='showPreview' bindlongpress='moreOption' data-id='{{todoItem._id}}' data-index='{{todoItem.index}}' data-locked='{{doneItem.locked}}'>
+      <!--事项内容框-->
+      <view style='width:100%;height:80%;'>
+        {{todoItem.content}}
+      </view>
+      <!--标记备注：时间、地点、闹钟提醒等-->
+      <view style='width:100%;height:20%;font-size:20rpx;display:flex;flex-direction:row;color:#AAAAAA;'>
+        <view>{{todoItem.time}}</view>
+      </view>
+    </view>
+    <!--已加密锁定图标-->
+    <view wx:if='{{todoItem.locked}}' style='position:relative;left:-50rpx;top:49rpx;'>
+      <image src='/images/lock.png' style='width:40rpx;height:40rpx;'></image>
+    </view>
+  </view>
+  <!--隐藏显示待办备忘按钮-->
+  <view wx:if='{{doneNumber!=0}}' style='width:400rpx;height:50rpx;background:#F6F6F6;margin:50rpx 145rpx;font-size:30rpx;color:#AAAAAA;text-align:center;' bindtap='hideDone'>{{hideDone?"显示":"隐藏"}}已完成待办备忘({{doneNumber}})</view>
+  <!--已完成备忘事项-->
+  <view wx:if='{{!hideDone}}' wx:for='{{doneItems}}' wx:for-item='doneItem' wx:key='item' class='text' style='width:100%;height:150rpx;display:flex;flex-direction:row;color:#AAAAAA'>
+    <!--已完成圈勾图片-->
+    <view style='position:relative;top:49rpx;'>
+      <image src='/images/done.png' style='width:50rpx;height:50rpx;'></image>
+    </view>
+    <!--右边文本框-->
+    <view style='width:635rpx;height:128rpx;border-bottom:2rpx solid #F6F6F6;position:relative;left:15rpx;padding:10rpx;' bindtap='showPreview' bindlongpress='moreOption' data-id='{{doneItem._id}}' data-index='{{todoItem.index}}' data-locked='{{doneItem.locked}}'>
+      <!--事项内容框-->
+      <view style='width:100%;height:80%;text-decoration:line-through;'>
+        {{doneItem.content}}
+      </view>
+      <!--标记备注：时间、地点、闹钟提醒等-->
+      <view style='width:100%;height:20%;font-size:20rpx;display:flex;flex-direction:row;'>
+        <view>{{doneItem.time}}</view>
+      </view>
+    </view>
+    <!--已加密锁定图标-->
+    <view wx:if='{{doneItem.locked}}' style='position:relative;left:-50rpx;top:49rpx;'>
+      <image src='/images/donelock.png' style='width:40rpx;height:40rpx;'></image>
+    </view>
+  </view>
+</scroll-view>

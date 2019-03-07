@@ -1,0 +1,2 @@
+<!--miniprogram/pages/edit/edit.wxml-->
+<textarea value='{{content}}' focus='{{focus}}' maxlength='-1' style='width:690rpx;height:1274rpx;padding:30rpx;' bindinput='autoSave'></textarea>

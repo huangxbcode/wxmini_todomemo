@@ -1,0 +1,2 @@
+<!--miniprogram/pages/main/preview/preview.wxml-->
+<view style='width:690rpx;height:1274rpx;padding:30rpx;' bindtap='moreOption'>{{content}}</view>
